@@ -8,7 +8,7 @@ public class Ejercicio2 {
 		b = 4; //4
 		c = 2 * a * b: //24
 		a = a + 2; //5
-		b = c - a; //21
+		b = c - a; //21 ja
 
 	}
 
