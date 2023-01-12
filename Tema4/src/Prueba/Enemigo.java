@@ -8,6 +8,8 @@ public class Enemigo {
 	private int nivel;
 	private int damage;
 	
+	public static int NumEnemigos;
+	
 	public Enemigo(String nombre, String tipo, int damage) {
 		super();
 		this.nombre = nombre;
@@ -15,6 +17,7 @@ public class Enemigo {
 		this.damage = damage;
 		this.salud = 100;
 		this.nivel = 1;
+		Enemigo.NumEnemigos++;
 	}
 
 	public String getNombre() {
@@ -58,8 +61,42 @@ public class Enemigo {
 	}
 	
 	public void subirNivel() {
+		this.nivel = this.nivel + 1;
+		this.salud = this.salud + (int) (Math.pow(2, this.nivel));
+	}
+	
+	public void recibirDamage (int damage) {
+		this.salud = this.salud - damage;
+		
+		if(this.salud <= 0) {
+			System.out.println(this.nombre + " muerto!!!");
+			Enemigo.NumEnemigos--;
+		}
+		
+		
+	public static void incrementarNumEnemigos() {
+		Enemigo.NumEnemigos++;
+	}
 		
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Enemigo [nombre=");
+		builder.append(nombre);
+		builder.append(", tipo=");
+		builder.append(tipo);
+		builder.append(", salud=");
+		builder.append(salud);
+		builder.append(", nivel=");
+		builder.append(nivel);
+		builder.append(", damage=");
+		builder.append(damage);
+		builder.append("]");
+		return builder.toString();
+	}
+	
 	
 	
 }
